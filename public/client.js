@@ -21,15 +21,14 @@ function setup() {
 function draw() {
 
   background(0);
-  PoseZero.draw();
   
-	local.update();
+	local.update(PoseZero.get());
 
 	socket.emit('game-update', local.data);
   console.log(world);
 	for (var i = 0; i < world.length; i++) {
-    console.log(world[i].data.pose);
     if (world[i].data.pose != null){
+      console.log(world[i].data.pose);
       PoseZero.draw_pose(world[i].data.pose)
     }
 	}

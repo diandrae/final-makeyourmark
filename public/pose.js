@@ -6,10 +6,8 @@ var PoseZero = new function(){
   this.pose0 = null
   this.posenet_objs = []
   this.track_smooth = 0.3
-  this.color = null
 
   this.init = function() {
-    this.color = [random(255),100,255];
     
     this.video = createCapture(VIDEO);
     this.video.size(width,height);
@@ -94,8 +92,8 @@ var PoseZero = new function(){
     }
   }
   
-  this.estimate_scale = function(){
-    return dist(this.pose0.nose.x, this.pose0.nose.y , this.pose0.leftEye.x, this.pose0.leftEye.y);
+  this.estimate_scale = function(pose){
+    return dist(pose.nose.x, pose.nose.y , pose.leftEye.x, pose.leftEye.y);
     
   }
   
@@ -117,7 +115,9 @@ var PoseZero = new function(){
   }
   
   
-  this.draw_pose = function(pose) {
+  this.draw_pose = function(pose, args) {
+    
+    
     push();
     
     colorMode(HSB, 255);
@@ -145,7 +145,7 @@ var PoseZero = new function(){
     // this._draw_bones(pose.leftEye, pose.leftEar);
     // this._draw_bones(pose.rightEye, pose.rightEar);
     
-    var s = this.estimate_scale();
+    var s = this.estimate_scale(pose);
     
     fill(10);
     ellipse(pose.leftEye.x, pose.leftEye.y, s*0.8, s*0.8);
