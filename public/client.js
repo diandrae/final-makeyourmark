@@ -17,6 +17,7 @@ function setup() {
 function draw() {
   var poses = Pose.get_poses();
   console.log(poses.length);
+  background(0);
   for (var i = 0; i < poses.length; i++){
     Pose.draw_pose(poses[i]);
   }

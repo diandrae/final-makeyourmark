@@ -11,6 +11,7 @@ PoseNet example using p5.js
 var Pose = new function(){
   this.video = null
   this.poseNet = null
+  this.pose = null
   this.poses = []
 
   this.init = function() {
@@ -25,18 +26,27 @@ var Pose = new function(){
     // This sets up an event that fills the global variable "poses"
     // with an array every time new poses are detected
     this.poseNet.on('pose', function(results) {
-      Pose.poses = results;
-      console.log(Pos
+      Pose._update_pose(results);
+      
     });
     // Hide the video element, and just show the canvas
     this.video.hide();
   }
 
-  this.get_poses = function(){
+  this._update_pose = function(pose){
+    var new_pose = results;
+      if (this.pose == null && results.length > 0){
+        this.pose = results[0]
+      }
+  }
+  
+  
+  this.get_all_poses = function(){
     return this.poses;
   }
   
-  this.draw_pose = function(pose) {
+  this.draw_pose = function(inst) {
+    let pose = inst.pose;
     for (let j = 0; j < pose.keypoints.length; j++) {
       // A keypoint is an object describing a body part (like rightArm or leftShoulder)
       let keypoint = pose.keypoints[j];
@@ -47,7 +57,7 @@ var Pose = new function(){
         ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
       }
     }
-    let skeleton = pose.skeleton;
+    let skeleton = inst.skeleton;
     // For every skeleton, loop through all body connections
     for (let j = 0; j < skeleton.length; j++) {
       let partA = skeleton[j][0];
