@@ -116,12 +116,13 @@ var PoseZero = new function(){
   
   
   this.draw_pose = function(pose, args) {
-    
+    if (args == undefined){args = {}}
+    if (args.color == undefined){args.color = [255,255,255]}
     
     push();
     
     colorMode(HSB, 255);
-    stroke.apply(this, this.color);
+    stroke.apply(this, args.color);
     strokeWeight(4);
     
     strokeJoin(ROUND);
@@ -147,7 +148,7 @@ var PoseZero = new function(){
     
     var s = this.estimate_scale(pose);
     
-    fill(10);
+    fill(0);
     ellipse(pose.leftEye.x, pose.leftEye.y, s*0.8, s*0.8);
     ellipse(pose.rightEye.x, pose.rightEye.y, s*0.8, s*0.8);
 

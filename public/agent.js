@@ -1,7 +1,8 @@
 function Agent(x, y){
   this.data = {
     position : {x:0, y:0},
-    pose : null
+    pose : null,
+    color: [random(255),100,255]
   }
 	
 	this.update = function(pose){

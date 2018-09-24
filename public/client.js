@@ -23,13 +23,19 @@ function draw() {
   background(0);
   
 	local.update(PoseZero.get());
-
+  
+  if (local.data.pose != null){
+    PoseZero.draw_pose(local.data.pose,{color:local.data.color})
+  }
 	socket.emit('game-update', local.data);
   console.log(world);
 	for (var i = 0; i < world.length; i++) {
+    if (world[i].id == socket.id){
+      continue;
+    }
     if (world[i].data.pose != null){
       console.log(world[i].data.pose);
-      PoseZero.draw_pose(world[i].data.pose)
+      PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color})
     }
 	}
 
