@@ -36,6 +36,8 @@ function draw() {
     if (world[i].data.pose != null){
       console.log(world[i].data.pose);
       PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color})
+    }else{
+      
     }
 	}
 
