@@ -81,8 +81,10 @@ var PoseZero = new function(){
     }
   }
   
-  this._draw_bone = function(p1,p2){
-    stroke()
+  this._draw_bones = function(){
+    for (var i = 0; i < arguments.length-1; i++){
+      line(arguments[i].x, arguments[i].y, arguments[i+1].x, arguments[i+1].y);
+    }
   }
   
   this._draw_pose = function(pose) {
@@ -91,5 +93,24 @@ var PoseZero = new function(){
       noStroke();
       ellipse(pose[k].x, pose[k].y, 10, 10);
     }
+    
+    stroke(255,0,0);
+    strokeWeight(5);
+    
+    this._draw_bones(pose.nose, pose.leftEye);
+    this._draw_bones(pose.nose, pose.rightEye);
+    this._draw_bones(pose.leftEye, pose.leftEar);
+    this._draw_bones(pose.rightEye, pose.rightEar);
+    
+    this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
+    
+    this._draw_bones(pose.leftShoulder, pose.leftElbow, pose.leftWrist);
+    
+    this._draw_bones(pose.rightShoulder, pose.rightElbow, pose.rightWrist);
+
+    this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
+    this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
+    
+
   }
 }
