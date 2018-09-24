@@ -13,9 +13,12 @@ var PoseZero = new function(){
   this.poseNet = null
   this.pose0 = null
   this.posenet_objs = []
-  this.track_smooth = 0.2
+  this.track_smooth = 0.4
+  this.color = null
 
   this.init = function() {
+    this.color = [random(255),100,255];
+    
     this.video = createCapture(VIDEO);
     this.video.size(640, 480);
 
@@ -81,21 +84,29 @@ var PoseZero = new function(){
     }
   }
   
+  this.estimate_scale = function(){
+    return dist(this.pose0.nose.x, this.pose0.nose.y , this.pose0.leftEye.x, this.pose0.leftEye.y)
+    
+  }
+  
   this._draw_bones = function(){
-    for (var i = 0; i < arguments.length-1; i++){
-      line(arguments[i].x, arguments[i].y, arguments[i+1].x, arguments[i+1].y);
+    beginShape()
+    for (var i = 0; i < arguments.length; i++){
+      vertex(arguments[i].x, arguments[i].y);
     }
+    endShape()
   }
   
   this._draw_pose = function(pose) {
-    for (var k in pose) {
-      fill(255, 0, 0);
-      noStroke();
-      ellipse(pose[k].x, pose[k].y, 10, 10);
-    }
     
-    stroke(255,0,0);
-    strokeWeight(5);
+    colorMode(HSB, 255);
+    stroke.apply(this, this.color);
+    strokeWeight(10);
+    
+    noFill();
+    
+    ellipse(pose.leftEye.x, pose.leftEye.y, 30, 30);
+    ellipse(pose.leftEye.x, pose.leftEye.y, 30, 30);
     
     this._draw_bones(pose.nose, pose.leftEye);
     this._draw_bones(pose.nose, pose.rightEye);
@@ -110,7 +121,7 @@ var PoseZero = new function(){
 
     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
-    
+    colorMode(RGB, 255);
 
   }
 }
