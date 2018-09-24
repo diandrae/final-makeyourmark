@@ -11,11 +11,11 @@ PoseNet example using p5.js
 function setup() {
   createCanvas(640, 480);
   background(0);
-  Pose.init()
+  PoseZero.init()
 }
 
 function draw() {
 
   background(0);
-  Pose.draw();
+  PoseZero.draw();
 }
