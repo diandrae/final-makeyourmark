@@ -1,5 +1,5 @@
 
-
+/* global describe createCapture VIDEO width height select ml5 lerp dist beginShape vertex endShape atan2 arc PI line push colorMode stroke HSB strokeWeight strokeJoin noFill ellipse ROUND fill pop*/
 var PoseZero = new function(){
   this.video = null
   this.poseNet = null
@@ -49,7 +49,7 @@ var PoseZero = new function(){
         poseA[k].x = lerp(poseA[k].x, poseB[k].x, t);
       }
       if (isNaN(poseA[k].y)){
-        poseA[k].y = new_pose[k].y
+        poseA[k].y = poseB[k].y
       }else{
         poseA[k].y = lerp(poseA[k].y, poseB[k].y, t);
       }

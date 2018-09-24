@@ -1,3 +1,4 @@
+/* global describe io createCanvas background PoseZero Agent*/
 var local;
 var world = [];
 var socket;
