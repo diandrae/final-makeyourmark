@@ -13,14 +13,14 @@ var PoseZero = new function(){
   this.poseNet = null
   this.pose0 = null
   this.posenet_objs = []
-  this.track_smooth = 0.4
+  this.track_smooth = 0.3
   this.color = null
 
   this.init = function() {
     this.color = [random(255),100,255];
     
     this.video = createCapture(VIDEO);
-    this.video.size(640, 480);
+    this.video.size(width,height);
 
     function modelReady() {
       select('#status').html('Model Loaded');
@@ -43,7 +43,10 @@ var PoseZero = new function(){
     var result = {}
     var kpts = posenet_obj.pose.keypoints
     for (var i = 0; i < kpts.length; i++){
-      result[kpts[i].part] = kpts[i].position
+      result[kpts[i].part] = {
+        x:width-kpts[i].position.x,
+        y:kpts[i].position.y
+      }      
     }
     return result;
   }
@@ -52,7 +55,7 @@ var PoseZero = new function(){
     
     this.posenet_objs = results;
     if (results.length > 0){
-      var new_pose = this._convert(results[0])
+      var new_pose = this._convert(this._get_largest_posenet_obj(results[0]));
       if (this.pose0 == null){
         this.pose0 = new_pose
       }else{
@@ -71,6 +74,22 @@ var PoseZero = new function(){
         }
       }
     }
+  }
+  
+  this._get_largest_posenet_obj = function(objs){
+    var max_i = 0;
+    var max_d = 0;
+    for (var i = 0; i < objs.length; i++){
+      var kpts = objs[i].pose.keypoints;
+      var nose = kpts[0]
+      var leftEye = kpts[1]
+      var d = dist(nose.x,nose.y,leftEye.x,leftEye.y);
+      if (d > max_d){
+        max_d = d;
+        max_i = i;
+      }
+    }
+    return objs[max_i];
   }
   
   this.get = function(){
@@ -97,7 +116,7 @@ var PoseZero = new function(){
   }
   
   this._draw_head = function(pose){
-    var ang = atan2(pose.rightEar.y-pose.leftEar.y,pose.rightEar.x-pose.leftEar.x);
+    var ang = atan2(pose.leftEar.y-pose.rightEar.y,pose.leftEar.x-pose.rightEar.x);
     var r = dist(pose.leftEar.x,pose.leftEar.y,pose.rightEar.x,pose.rightEar.y);
     arc((pose.leftEar.x+pose.rightEar.x)/2, (pose.leftEar.y+pose.rightEar.y)/2, r,r, ang, ang+PI);
     var neck = {x:(pose.leftShoulder.x + pose.rightShoulder.x)/2, y:(pose.leftShoulder.y + pose.rightShoulder.y)/2,}
@@ -110,7 +129,7 @@ var PoseZero = new function(){
     
     colorMode(HSB, 255);
     stroke.apply(this, this.color);
-    strokeWeight(5);
+    strokeWeight(4);
     
     strokeJoin(ROUND);
     
