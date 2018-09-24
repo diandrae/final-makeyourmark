@@ -71,7 +71,6 @@ var PoseZero = new function(){
         }
       }
     }
-    console.log(this.pose0);
   }
   
   this.get = function(){
@@ -97,11 +96,13 @@ var PoseZero = new function(){
     endShape()
   }
   
-  pose._draw_head = function(pose){
-    var ang = atan2(pose.rightShoulder.y-pose.leftShoulder.y,pose.rightShoulder.x-pose.leftShoulder.x);
-    var r = dist(pose.leftEar.x,pose.leftEar.y,pose.rightEar.x,pose.rightEar.y)/2;
-    arc((pose.leftEar.x+pose.rightEar.x)/2, (pose.leftEar.y+pose.rightEar.y)/2, r,r, -ang, ang);
-    
+  this._draw_head = function(pose){
+    var ang = atan2(pose.rightEar.y-pose.leftEar.y,pose.rightEar.x-pose.leftEar.x);
+    var r = dist(pose.leftEar.x,pose.leftEar.y,pose.rightEar.x,pose.rightEar.y);
+    arc((pose.leftEar.x+pose.rightEar.x)/2, (pose.leftEar.y+pose.rightEar.y)/2, r,r, ang, ang+PI);
+    var neck = {x:(pose.leftShoulder.x + pose.rightShoulder.x)/2, y:(pose.leftShoulder.y + pose.rightShoulder.y)/2,}
+    line(pose.leftEar.x,pose.leftEar.y,neck.x,neck.y);
+    line(pose.rightEar.x,pose.rightEar.y,neck.x,neck.y);
   }
   
   
@@ -127,10 +128,10 @@ var PoseZero = new function(){
     
     this._draw_head(pose);
     
-    this._draw_bones(pose.nose, pose.leftEye);
-    this._draw_bones(pose.nose, pose.rightEye);
-    this._draw_bones(pose.leftEye, pose.leftEar);
-    this._draw_bones(pose.rightEye, pose.rightEar);
+    // this._draw_bones(pose.nose, pose.leftEye);
+    // this._draw_bones(pose.nose, pose.rightEye);
+    // this._draw_bones(pose.leftEye, pose.leftEar);
+    // this._draw_bones(pose.rightEye, pose.rightEar);
     
     var s = this.estimate_scale();
     
