@@ -85,7 +85,7 @@ var PoseZero = new function(){
   }
   
   this.estimate_scale = function(){
-    return dist(this.pose0.nose.x, this.pose0.nose.y , this.pose0.leftEye.x, this.pose0.leftEye.y)
+    return dist(this.pose0.nose.x, this.pose0.nose.y , this.pose0.leftEye.x, this.pose0.leftEye.y);
     
   }
   
@@ -97,21 +97,24 @@ var PoseZero = new function(){
     endShape()
   }
   
+  pose._draw_head = function(pose){
+    var ang = atan2(pose.rightShoulder.y-pose.leftShoulder.y,pose.rightShoulder.x-pose.leftShoulder.x);
+    var r = dist(pose.leftEar.x,pose.leftEar.y,pose.rightEar.x,pose.rightEar.y)/2;
+    arc((pose.leftEar.x+pose.rightEar.x)/2, (pose.leftEar.y+pose.rightEar.y)/2, r,r, -ang, ang);
+    
+  }
+  
+  
   this._draw_pose = function(pose) {
     
     colorMode(HSB, 255);
     stroke.apply(this, this.color);
-    strokeWeight(10);
+    strokeWeight(5);
+    
+    strokeJoin(ROUND);
     
     noFill();
-    
-    ellipse(pose.leftEye.x, pose.leftEye.y, 30, 30);
-    ellipse(pose.leftEye.x, pose.leftEye.y, 30, 30);
-    
-    this._draw_bones(pose.nose, pose.leftEye);
-    this._draw_bones(pose.nose, pose.rightEye);
-    this._draw_bones(pose.leftEye, pose.leftEar);
-    this._draw_bones(pose.rightEye, pose.rightEar);
+
     
     this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
     
@@ -121,7 +124,21 @@ var PoseZero = new function(){
 
     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
-    colorMode(RGB, 255);
+    
+    this._draw_head(pose);
+    
+    this._draw_bones(pose.nose, pose.leftEye);
+    this._draw_bones(pose.nose, pose.rightEye);
+    this._draw_bones(pose.leftEye, pose.leftEar);
+    this._draw_bones(pose.rightEye, pose.rightEar);
+    
+    var s = this.estimate_scale();
+    
+    fill(10);
+    ellipse(pose.leftEye.x, pose.leftEye.y, s*0.8, s*0.8);
+    ellipse(pose.rightEye.x, pose.rightEye.y, s*0.8, s*0.8);
 
+    
+    colorMode(RGB, 255);
   }
 }
