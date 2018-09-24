@@ -1,12 +1,4 @@
-// Copyright (c) 2018 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
 
-/* ===
-ml5 Example
-PoseNet example using p5.js
-=== */
 
 var PoseZero = new function(){
   this.video = null
@@ -55,7 +47,7 @@ var PoseZero = new function(){
     
     this.posenet_objs = results;
     if (results.length > 0){
-      var new_pose = this._convert(this._get_largest_posenet_obj(results[0]));
+      var new_pose = this._convert(this._get_largest_posenet_obj(results));
       if (this.pose0 == null){
         this.pose0 = new_pose
       }else{
@@ -98,7 +90,7 @@ var PoseZero = new function(){
   
   this.draw = function(){
     if (this.pose0 != null){
-      this._draw_pose(this.get());
+      this.draw_pose(this.get());
     }
   }
   
@@ -125,7 +117,8 @@ var PoseZero = new function(){
   }
   
   
-  this._draw_pose = function(pose) {
+  this.draw_pose = function(pose) {
+    push();
     
     colorMode(HSB, 255);
     stroke.apply(this, this.color);
@@ -159,6 +152,6 @@ var PoseZero = new function(){
     ellipse(pose.rightEye.x, pose.rightEye.y, s*0.8, s*0.8);
 
     
-    colorMode(RGB, 255);
+    pop();
   }
 }
