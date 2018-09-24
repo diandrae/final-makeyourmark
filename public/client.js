@@ -22,7 +22,7 @@ function draw() {
 
   background(0);
   
-  image(PoseZero.video, 0, 0, 100, 100);
+  // image(PoseZero.video, 0, 0, width*0.2, height*0.2);
   
 	local.update(PoseZero.get());
   

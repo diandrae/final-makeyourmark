@@ -41,6 +41,23 @@ var PoseZero = new function(){
     return result;
   }
   
+  this.lerp_pose = function(poseA, poseB, t){
+    for (var k in poseB){
+      if (isNaN(poseA[k].x)){
+        poseA[k].x = poseB[k].x
+      }else{
+        poseA[k].x = lerp(poseA[k].x, poseB[k].x, t);
+      }
+      if (isNaN(poseA[k].y)){
+        poseA[k].y = new_pose[k].y
+      }else{
+        poseA[k].y = lerp(poseA[k].y, poseB[k].y, t);
+      }
+    }
+    
+  }
+  
+  
   this._update = function(results){
     
     this.posenet_objs = results;
@@ -49,19 +66,8 @@ var PoseZero = new function(){
       if (this.pose0 == null){
         this.pose0 = new_pose
       }else{
-        for (var k in new_pose){
-          if (isNaN(this.pose0[k].x)){
-            this.pose0[k].x = new_pose[k].x
-          }else{
-            this.pose0[k].x = lerp(this.pose0[k].x, new_pose[k].x, this.track_smooth);
-          }
-          if (isNaN(this.pose0[k].y)){
-            this.pose0[k].y = new_pose[k].y
-          }else{
-            this.pose0[k].y = lerp(this.pose0[k].y, new_pose[k].y, this.track_smooth);
-          }
-          
-        }
+        this.lerp_pose(this.pose0, new_pose, this.track_smooth);
+        
       }
     }
   }
