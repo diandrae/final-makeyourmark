@@ -22,6 +22,8 @@ function draw() {
 
   background(0);
   
+  image(PoseZero.video, 0, 0, 100, 100);
+  
 	local.update(PoseZero.get());
   
   if (local.data.pose != null){

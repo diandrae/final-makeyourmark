@@ -35,7 +35,7 @@ function newConnection(socket){
 		console.log(socket.id)
 		var player = new Player(socket.id, data)
 		players.push(player)
-		setInterval(heartbeat, 33)
+		setInterval(heartbeat, 10)
 
 		function heartbeat(){
 			io.sockets.emit('heartbeat', players)
