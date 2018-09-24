@@ -1,5 +1,5 @@
-var self;
-var everybody;
+var local;
+var world = [];
 var socket;
 
 function setup() {
@@ -9,11 +9,11 @@ function setup() {
   background(0);
   PoseZero.init()
   
-  var self = new Agent();
+  local = new Agent();
 
-	socket.emit('game-start', self.data)
+	socket.emit('game-start', local.data)
 	socket.on('heartbeat', function(data){
-		everybody = data;
+		world = data;
 	})
 
 }
@@ -23,13 +23,14 @@ function draw() {
   background(0);
   PoseZero.draw();
   
-	self.update();
+	local.update();
 
-	socket.emit('game-update', self.data);
-  
-	for (var i = 0; i < everybody.length; i++) {
-    if (everybody[i].data.pose != null){
-      PoseZero.draw_pose(everybody[i].data.pose)
+	socket.emit('game-update', local.data);
+  console.log(world);
+	for (var i = 0; i < world.length; i++) {
+    console.log(world[i].data.pose);
+    if (world[i].data.pose != null){
+      PoseZero.draw_pose(world[i].data.pose)
     }
 	}
 
