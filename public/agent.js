@@ -1,4 +1,4 @@
-function Blob(x, y, get_pose, draw_pose){
+function Blob(x, y, get_pose){
 	this.pos = createVector(x, y);
 	this.vel = createVector(0,0);
 	this.pose = get_pose();
@@ -26,7 +26,5 @@ function Blob(x, y, get_pose, draw_pose){
 		blob.pos.x = constrain(blob.pos.x, -width, width)
 		blob.pos.y = constrain(blob.pos.y, -height, height)
 	}
-	this.show = function(){
-		draw_pose();
-	}
+
 }

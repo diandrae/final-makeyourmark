@@ -11,54 +11,51 @@ var socket = require('socket.io');
 var io = socket(server);
 
 io.sockets.on('connection', newConnection);
+
 var players = [];
-function Player(id){
+
+function Player(id, data){
 	this.id = id;
+  this.data = data;
 }
+
 function newConnection(socket){
 	console.log('new connection: ' + socket.id)
 	socket.on('mouse', mouseMsg);
-	socket.on('agario-start', agarioStart)
-	socket.on('agario-update', agarioUpdate)
-	socket.on('eaten', eaten)
-	socket.on('disconnect', removeBlob)
+	socket.on('game-start', gameStart)
+	socket.on('game-update', gameUpdate)
+	socket.on('disconnect', removePlayer)
   
 	function mouseMsg(data){
 		socket.broadcast.emit('mouse', data);
-		//the line below will send to everyone including the client
-		// io.sockets.emit('mouse', data);
 		console.log(data)
 	}
-	function agarioStart(data){
-		console.log(socket.id + " " + data.x + " " + data.y + " " +data.r)
-		var blob = new Blob(socket.id, data.x, data.y, data.r)
-		blobs.push(blob)
+  
+	function gameStart(data){
+		console.log(socket.id)
+		var player = new Player(socket.id, data)
+		players.push(player)
 		setInterval(heartbeat, 33)
 
 		function heartbeat(){
-			io.sockets.emit('heartbeat', blobs)
+			io.sockets.emit('heartbeat', players)
 		}
 	}
-	function agarioUpdate(data){
-		// console.log(socket.id + " " + data.x + " " + data.y + " " + data.r)
-		var blob;
-		for (var i = 0; i < blobs.length; i++) {
-			if(socket.id == blobs[i].id){
-				blob = blobs[i];
+	function gameUpdate(data){
+		var player;
+		for (var i = 0; i < players.length; i++) {
+			if(socket.id == players[i].id){
+				player = playerss[i];
 				break;
 			}
 		}
-		blob.x = data.x;
-		blob.y = data.y;
-		blob.r = data.r;
+		player.data = data;
 	}
-	function eaten(data){
-		socket.broadcast.to(data.id).emit('eaten', true)
-	}
-	function removeBlob(){
-		for (var i = 0; i < blobs.length; i++) {
-			if(socket.id == blobs[i].id){
-				blobs.splice(i, 1)
+
+	function removePlayer(){
+		for (var i = 0; i < players.length; i++) {
+			if(socket.id == players[i].id){
+				players.splice(i, 1)
 				console.log('disconnected')
 				break
 			}
