@@ -1,7 +1,10 @@
 var self;
 var everybody;
+var socket;
 
 function setup() {
+  socket = io();
+  
   createCanvas(640, 480);
   background(0);
   PoseZero.init()

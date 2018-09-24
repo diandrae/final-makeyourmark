@@ -1,7 +1,7 @@
 var express = require('express'); 
 
 var app = express();
-var server = app.listen(process.env.PORT || 3000);
+var server = app.listen(process.env.PORT || 300);
 
 app.use(express.static('public'));
 console.log('server running')
@@ -45,7 +45,7 @@ function newConnection(socket){
 		var player;
 		for (var i = 0; i < players.length; i++) {
 			if(socket.id == players[i].id){
-				player = playerss[i];
+				player = players[i];
 				break;
 			}
 		}
