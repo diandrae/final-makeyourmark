@@ -1,3 +1,3 @@
-Template by [Lingdong Huang](https://www.andrew.cmu.edu/user/lingdonh/portfolio-links/)
+Template by [Lingdong Huang](https://glitch.com/@LingDong-)
 modified by char (hi)
 \ ゜o゜)ノ

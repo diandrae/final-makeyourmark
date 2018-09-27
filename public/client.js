@@ -12,7 +12,6 @@ function setup() {
   
   local = new Agent();
 
-
 }
 
 function draw() {
