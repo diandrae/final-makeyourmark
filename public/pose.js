@@ -17,6 +17,7 @@ var PoseZero = new function(){
     }
     // Create a new poseNet method with a single detection
     this.poseNet = ml5.poseNet(this.video, modelReady);
+    
     // This sets up an event that fills the global variable "poses"
     // with an array every time new poses are detected
     var self = this;
@@ -112,7 +113,7 @@ var PoseZero = new function(){
     endShape()
   }
   
-  this._draw_head = function(pose){
+  this._draw_head = function(pose){ //round arc from ear to ear then a straight line down
     var ang = atan2(pose.leftEar.y-pose.rightEar.y,pose.leftEar.x-pose.rightEar.x);
     var r = dist(pose.leftEar.x,pose.leftEar.y,pose.rightEar.x,pose.rightEar.y);
     arc((pose.leftEar.x+pose.rightEar.x)/2, (pose.leftEar.y+pose.rightEar.y)/2, r,r, ang, ang+PI);
@@ -136,7 +137,6 @@ var PoseZero = new function(){
     
     noFill();
 
-    
     this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
     
     this._draw_bones(pose.leftShoulder, pose.leftElbow, pose.leftWrist);
@@ -147,19 +147,13 @@ var PoseZero = new function(){
     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
     
     this._draw_head(pose);
-    
-    // this._draw_bones(pose.nose, pose.leftEye);
-    // this._draw_bones(pose.nose, pose.rightEye);
-    // this._draw_bones(pose.leftEye, pose.leftEar);
-    // this._draw_bones(pose.rightEye, pose.rightEar);
-    
+  
     var s = this.estimate_scale(pose);
     
     fill(0);
     ellipse(pose.leftEye.x, pose.leftEye.y, s*0.8, s*0.8);
     ellipse(pose.rightEye.x, pose.rightEye.y, s*0.8, s*0.8);
-
-    
+    ellipse(pose.nose.x, pose.nose.y, s*0.5, s*0.5);
     pop();
   }
 }
