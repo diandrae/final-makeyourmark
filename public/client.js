@@ -37,8 +37,6 @@ function draw() {
   // give the server your updates
 	socket.emit('game-update', local.data);
   
-  console.log(world);
-  
   // draw the other skeletons
 	for (var i = 0; i < world.length; i++) {
     if (world[i].id == socket.id){ // if its you skip drawing it
@@ -46,7 +44,6 @@ function draw() {
     }
     
     if (world[i].data.pose != null){
-      console.log(world[i].data.pose);
       PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color})
     }
 	}
