@@ -1,47 +1,55 @@
 var local;
 var world = [];
-//var socket;
+var socket;
 
 function setup() {
-  //socket = io();
+  socket = io();
   
   createCanvas(640, 480);
   background(0);
-  PoseZero.init()
   
+  //this is where posenet initlizes and webcam stuff happens
+  PoseZero.init();
+  
+  //this is you, check out agent.js for adding properties and functions
   local = new Agent();
 
-	//socket.emit('game-start', local.data)
-	//socket.on('heartbeat', function(data){
-	//	world = data;
-	//})
+  //tell the server "i am here!"
+	socket.emit('game-start', local.data)
+  // listen for the server to send you a heartbeat and when it does do this
+	socket.on('heartbeat', function(data){
+		world = data;
+	})
 
 }
 
 function draw() {
 
   background(0);
+    
+	local.update(PoseZero.get());// update your skeleton
   
-  // image(PoseZero.video, 0, 0, width*0.2, height*0.2);
-  
-	local.update(PoseZero.get());
-  
-  if (local.data.pose != null){
+  //draw the skeleton
+  if (local.data.pose != null){ 
     PoseZero.draw_pose(local.data.pose,{color:local.data.color})
   }
-// 	//socket.emit('game-update', local.data);
-//   console.log(world);
-// 	for (var i = 0; i < world.length; i++) {
-//     if (world[i].id == socket.id){
-//       continue;
-//     }
-//     if (world[i].data.pose != null){
-//       console.log(world[i].data.pose);
-//       PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color})
-//     }else{
-      
-//     }
-// 	}
+  
+  // give the server your updates
+	socket.emit('game-update', local.data);
+  
+  console.log(world);
+  
+  // draw the other skeletons
+	for (var i = 0; i < world.length; i++) {
+    if (world[i].id == socket.id){ // if its you skip drawing it
+      continue;
+    }
+    
+    if (world[i].data.pose != null){
+      console.log(world[i].data.pose);
+      PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color})
+    }
+	}
 
   
 }

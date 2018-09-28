@@ -9,11 +9,11 @@ var PoseZero = new function(){
 
   this.init = function() {
     
-    this.video = createCapture(VIDEO);
+    this.video = createCapture(VIDEO);  // init webcam
     this.video.size(width,height);
 
     function modelReady() {
-      select('#status').html('Model Loaded');
+      select('#status').html('Model Loaded'); // change that html bit to say model loaded
     }
     // Create a new poseNet method with a single detection
     this.poseNet = ml5.poseNet(this.video, modelReady);
@@ -41,6 +41,7 @@ var PoseZero = new function(){
     return result;
   }
   
+  // smoothens the movement
   this.lerp_pose = function(poseA, poseB, t){
     for (var k in poseB){
       if (isNaN(poseA[k].x)){
