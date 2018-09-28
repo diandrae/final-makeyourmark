@@ -1,4 +1,3 @@
-/* global describe random*/
 function Agent(x, y){
   this.data = {
     position : {x:0, y:0},
