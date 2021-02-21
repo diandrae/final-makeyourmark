@@ -27,7 +27,7 @@ var PoseZero = new function(){
       
     });
     // Hide the video element, and just show the canvas
-    this.video.hide();
+    // this.video.hide();
   }
 
   this._convert = function(posenet_obj){
@@ -111,15 +111,6 @@ var PoseZero = new function(){
       vertex(arguments[i].x, arguments[i].y);
     }
     endShape()
-  }
-  
-  this._draw_head = function(pose){ //round arc from ear to ear then a straight line down
-    var ang = atan2(pose.leftEar.y-pose.rightEar.y,pose.leftEar.x-pose.rightEar.x);
-    var r = dist(pose.leftEar.x,pose.leftEar.y,pose.rightEar.x,pose.rightEar.y);
-    arc((pose.leftEar.x+pose.rightEar.x)/2, (pose.leftEar.y+pose.rightEar.y)/2, r,r, ang, ang+PI);
-    var neck = {x:(pose.leftShoulder.x + pose.rightShoulder.x)/2, y:(pose.leftShoulder.y + pose.rightShoulder.y)/2,}
-    line(pose.leftEar.x,pose.leftEar.y,neck.x,neck.y);
-    line(pose.rightEar.x,pose.rightEar.y,neck.x,neck.y);
   }
   
   
