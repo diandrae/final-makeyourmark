@@ -5,8 +5,10 @@ var socket;
 function setup() {
   socket = io();
   
-  createCanvas(640, 480);
-  background(0);
+  createCanvas(windowWidth,windowHeight);
+  capture = createCapture(VIDEO);
+  // capture.size(220, 140);
+  background(255);
   
   //this is where posenet initlizes and webcam stuff happens
   PoseZero.init();
@@ -26,6 +28,8 @@ function setup() {
 function draw() {
 
   // background(0);
+  
+   image(capture, 0, 0, 220, 140);
     
 	local.update(PoseZero.get());// update your skeleton
   
