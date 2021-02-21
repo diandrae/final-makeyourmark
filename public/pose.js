@@ -137,23 +137,21 @@ var PoseZero = new function(){
     
     noFill();
 
-    this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
+    // this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
     
-    this._draw_bones(pose.leftShoulder, pose.leftElbow, pose.leftWrist);
+    this._draw_bones(pose.leftElbow, pose.leftWrist);
     
-    this._draw_bones(pose.rightShoulder, pose.rightElbow, pose.rightWrist);
+    this._draw_bones(pose.rightElbow, pose.rightWrist);
 
-    this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
-    this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
+//     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
+//     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
     
-    this._draw_head(pose);
+//     this._draw_head(pose);
   
     var s = this.estimate_scale(pose);
     
     fill(0);
-    ellipse(pose.leftEye.x, pose.leftEye.y, s*0.8, s*0.8);
-    ellipse(pose.rightEye.x, pose.rightEye.y, s*0.8, s*0.8);
-    ellipse(pose.nose.x, pose.nose.y, s*0.5, s*0.5);
+    rect(this._draw_bones);
     pop();
   }
 }

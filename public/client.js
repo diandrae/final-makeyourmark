@@ -25,7 +25,7 @@ function setup() {
 
 function draw() {
 
-  background(0);
+  // background(0);
     
 	local.update(PoseZero.get());// update your skeleton
   
