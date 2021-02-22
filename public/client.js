@@ -25,31 +25,31 @@ function setup() {
 	})
   
   // initialInput = createInput("Initials");
-var saveButton = select('#saveButton');
-  saveButton.mousePressed(saveDrawing);
+// var saveButton = select('#saveButton');
+//   saveButton.mousePressed(saveDrawing);
   
   
   
-  //configure Firebase
-   var firebaseConfig = {
-    apiKey: "AIzaSyBnf2hTYsEs6blfOXPSQMEqcp2HOeSh4WI",
-    authDomain: "make-your-mark-6437b.firebaseapp.com",
-    projectId: "make-your-mark-6437b",
-    storageBucket: "make-your-mark-6437b.appspot.com",
-    messagingSenderId: "372648696036",
-    appId: "1:372648696036:web:fb5cd1361754548b93f4f1",
-    measurementId: "G-ECJCD7BJ80"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  console.log(firebase);
+//   //configure Firebase
+//    var firebaseConfig = {
+//     apiKey: "AIzaSyBnf2hTYsEs6blfOXPSQMEqcp2HOeSh4WI",
+//     authDomain: "make-your-mark-6437b.firebaseapp.com",
+//     projectId: "make-your-mark-6437b",
+//     storageBucket: "make-your-mark-6437b.appspot.com",
+//     messagingSenderId: "372648696036",
+//     appId: "1:372648696036:web:fb5cd1361754548b93f4f1",
+//     measurementId: "G-ECJCD7BJ80"
+//   };
+//   // Initialize Firebase
+//   firebase.initializeApp(firebaseConfig);
+//   firebase.analytics();
+//   console.log(firebase);
 
-  var database = firebase.database();
-  var ref = database.ref('drawings');
-  var data = {
-    name: "DE", 
-  }
+//   var database = firebase.database();
+//   var ref = database.ref('drawings');
+//   var data = {
+//     name: "DE", 
+//   }
   
 }
 
@@ -83,11 +83,11 @@ function draw() {
   
 }
 
-function saveDrawing() {
-  var ref = database.ref('drawings');
-  var data{
-    name: "Diandra";
-    drawing:drawing
-  }
-  ref.push(data);
-}
+// function saveDrawing() {
+//   var ref = database.ref('drawings');
+//   var data{
+//     name: "Diandra";
+//     drawing:drawing
+//   }
+//   ref.push(data);
+// }
