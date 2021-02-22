@@ -2,6 +2,7 @@ var local;
 var world = [];
 var socket;
 
+
 function setup() {
   socket = io();
   
@@ -23,6 +24,13 @@ function setup() {
 		world = data;
 	})
   
+  // initialInput = createInput("Initials");
+var saveButton = select('#saveButton');
+  saveButton.mousePressed(saveDrawing);
+  
+  
+  
+  //configure Firebase
    var firebaseConfig = {
     apiKey: "AIzaSyBnf2hTYsEs6blfOXPSQMEqcp2HOeSh4WI",
     authDomain: "make-your-mark-6437b.firebaseapp.com",
@@ -38,7 +46,11 @@ function setup() {
   console.log(firebase);
 
   var database = firebase.database();
-  var ref = database
+  var ref = database.ref('drawings');
+  var data = {
+    name: "DE", 
+  }
+  
 }
 
 function draw() {
@@ -69,4 +81,8 @@ function draw() {
 	}
 
   
+}
+
+function submitDrawing() {
+  var data 
 }
