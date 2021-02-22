@@ -58,7 +58,6 @@ function draw() {
   
   image(capture, 0, 0, 220, 140);
   
-  blendMode(MULTIPLY);
   
 	local.update(PoseZero.get());// update your skeleton
   
