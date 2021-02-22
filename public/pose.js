@@ -117,9 +117,17 @@ var PoseZero = new function(){
   }
   
   
+  this.previousPose = undefined;
+  
   this.draw_pose = function(pose, args) {
     if (args == undefined){args = {}}
     if (args.color == undefined){args.color = [255,255,255]}
+    
+    if(!this.previousPose)
+    {
+      this.previousPose = pose;
+      return;
+    }
     
     push();
     
@@ -133,8 +141,16 @@ var PoseZero = new function(){
     // this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
     
     this._draw_bones(pose.leftElbow, pose.leftWrist);
-    
     this._draw_bones(pose.rightElbow, pose.rightWrist);
+    
+    // noStroke();
+    // fill(0, 255, 100);
+    beginShape();
+    vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
+    vertex(pose.leftElbow.x, pose.leftElbow.y);
+    vertex(this.previousPose.rightElbow.x, this.previousPose.rightElbow.y);
+    vertex(pose.rightElbow.x, pose.rightElbow.y);
+    endShape(TRIANGLE_STRIP);
 
 //     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
 //     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
@@ -145,6 +161,9 @@ var PoseZero = new function(){
     fill(0);
     rect(this._draw_bones);
     pop();
+    
+    this.previousPose = pose;
+    
   }
 }
 
