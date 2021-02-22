@@ -22,7 +22,23 @@ function setup() {
 	socket.on('heartbeat', function(data){
 		world = data;
 	})
+  
+   var firebaseConfig = {
+    apiKey: "AIzaSyBnf2hTYsEs6blfOXPSQMEqcp2HOeSh4WI",
+    authDomain: "make-your-mark-6437b.firebaseapp.com",
+    projectId: "make-your-mark-6437b",
+    storageBucket: "make-your-mark-6437b.appspot.com",
+    messagingSenderId: "372648696036",
+    appId: "1:372648696036:web:fb5cd1361754548b93f4f1",
+    measurementId: "G-ECJCD7BJ80"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  console.log(firebase);
 
+  var database = firebase.database();
+  var ref = database
 }
 
 function draw() {
