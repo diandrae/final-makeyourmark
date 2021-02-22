@@ -104,7 +104,7 @@ var PoseZero = new function(){
     return dist(pose.nose.x, pose.nose.y , pose.leftEye.x, pose.leftEye.y);
   }
   
-  /// this bit! vvvv
+  /// this bit (i think?)! vvvv
   
   
   //drawing the bone lines
