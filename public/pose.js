@@ -133,8 +133,12 @@ var PoseZero = new function(){
       return;
     };
     
+    
+    console.log(this.previousPose == undefined);
+    
     if(this.previousPose == undefined)
     {
+      console.log('set previous pose');
       this.previousPose = pose;
       return;
     }
@@ -156,25 +160,30 @@ var PoseZero = new function(){
     // noStroke();
     fill(0,255,0);
     stroke(255,0,0);
-    // ellipse(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y, 10, 10);
-    // ellipse(pose.leftElbow.x, pose.leftElbow.y, 10, 10);
     // ellipse(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y, 10, 10);
     // ellipse(pose.leftWrist.x, pose.leftWrist.y, 10, 10);
     
+    // ellipse(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y, 10, 10);
+    // ellipse(pose.leftElbow.x, pose.leftElbow.y, 10, 10);
+    
     beginShape();
-    vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
-    vertex(pose.leftElbow.x, pose.leftElbow.y);
     vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
     vertex(pose.leftWrist.x, pose.leftWrist.y);
+    vertex(pose.leftElbow.x, pose.leftElbow.y);
+    vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
     
-    console.log('LeftElbow: ' + pose.leftElbow.x);
-    console.log('LeftWrist: ' + pose.leftWrist.x);
-    console.log('PrevElbow: ' + this.previousPose.leftElbow.x);
-    console.log('PrevWrist: ' + this.previousPose.leftWrist.x);
+    // console.log('LeftElbow: ' + pose.leftElbow.x);
+    // console.log('LeftWrist: ' + pose.leftWrist.x);
+    // console.log('PrevElbow: ' + this.previousPose.leftElbow.x);
+    // console.log('PrevWrist: ' + this.previousPose.leftWrist.x);
     
+    //top left
     // vertex(0, 0 );
+    // //top right
     // vertex(200, 0 );
+    // // bottom right
     // vertex(200, 200 );
+    // // bottom left
     // vertex(0, 200 );
     endShape(CLOSE);
 
