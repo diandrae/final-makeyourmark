@@ -6,6 +6,7 @@ var socket;
 function setup() {
   socket = io();
   
+  
   cnv = createCanvas(windowWidth,windowHeight);
   capture = createCapture(VIDEO);
   // capture.size(220, 140);
@@ -54,11 +55,11 @@ function setup() {
 }
 
 function draw() {
-
-  // background(0);
   
-   image(capture, 0, 0, 220, 140);
-    
+  image(capture, 0, 0, 220, 140);
+  
+  blendMode(MULTIPLY);
+  
 	local.update(PoseZero.get());// update your skeleton
   
   //draw the skeleton

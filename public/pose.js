@@ -123,10 +123,9 @@ var PoseZero = new function(){
     colorMode(HSB, 255);
     stroke.apply(this, args.color);
     strokeWeight(4);
+    blendMode(MULTIPLY);
     
     strokeJoin(ROUND);
-    
-    noFill();
 
     // this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
     
