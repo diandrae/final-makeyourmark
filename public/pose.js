@@ -119,6 +119,11 @@ var PoseZero = new function(){
   
   this.previousPose = undefined;
   
+  this.validPose = function()
+  {
+    
+  }
+  
   this.draw_pose = function(pose, args) {
     if (args == undefined){args = {}}
     if (args.color == undefined){args.color = [255,255,255]}
@@ -134,23 +139,35 @@ var PoseZero = new function(){
     colorMode(HSB, 255);
     stroke.apply(this, args.color);
     strokeWeight(4);
-    blendMode(MULTIPLY);
+    // blendMode(MULTIPLY);
     
     strokeJoin(ROUND);
 
     // this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
     
-    this._draw_bones(pose.leftElbow, pose.leftWrist);
-    this._draw_bones(pose.rightElbow, pose.rightWrist);
+    // this._draw_bones(pose.leftElbow, pose.leftWrist);
+    // this._draw_bones(pose.rightElbow, pose.rightWrist);
     
     // noStroke();
-    // fill(0, 255, 100);
+    fill(0,255,255);
+    // ellipse(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y, 10, 10);
+    // ellipse(pose.leftElbow.x, pose.leftElbow.y, 10, 10);
+    // ellipse(this.previousPose.rightElbow.x, this.previousPose.rightElbow.y, 10, 10);
+    // ellipse(pose.rightElbow.x, pose.rightElbow.y, 10, 10);
+    
     beginShape();
     vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
     vertex(pose.leftElbow.x, pose.leftElbow.y);
-    vertex(this.previousPose.rightElbow.x, this.previousPose.rightElbow.y);
-    vertex(pose.rightElbow.x, pose.rightElbow.y);
-    endShape(TRIANGLE_STRIP);
+    vertex(pose.leftWrist.x, pose.leftWrist.y);
+    vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    
+    console.log(this.previousPost.leftWrist);
+    
+    // vertex(0, 0 );
+    // vertex(200, 0 );
+    // vertex(200, 200 );
+    // vertex(0, 200 );
+    endShape();
 
 //     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
 //     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
