@@ -168,9 +168,10 @@ var PoseZero = new function(){
     
     beginShape();
     vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
-    vertex(pose.leftWrist.x, pose.leftWrist.y);
     vertex(pose.leftElbow.x, pose.leftElbow.y);
     vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
+    vertex(pose.leftWrist.x, pose.leftWrist.y);
+
     
     // console.log('LeftElbow: ' + pose.leftElbow.x);
     // console.log('LeftWrist: ' + pose.leftWrist.x);
