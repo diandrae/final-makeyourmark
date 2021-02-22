@@ -107,14 +107,14 @@ var PoseZero = new function(){
   /// this bit (i think?)! vvvv
   
   
-  //drawing the bone lines
-  // this._draw_bones = function(){
-  //   beginShape()
-  //   for (var i = 0; i < arguments.length; i++){
-  //     vertex(arguments[i].x, arguments[i].y);
-  //   }
-  //   endShape()
-  // }
+  drawing the bone lines
+  this._draw_bones = function(){
+    beginShape()
+    for (var i = 0; i < arguments.length; i++){
+      vertex(arguments[i].x, arguments[i].y);
+    }
+    endShape()
+  }
   
   
   this.previousPose = undefined;
@@ -167,10 +167,10 @@ var PoseZero = new function(){
     // ellipse(pose.leftElbow.x, pose.leftElbow.y, 10, 10);
     
     beginShape();
-vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
-       vertex(pose.leftWrist.x, pose.leftWrist.y);
+    vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    vertex(pose.leftWrist.x, pose.leftWrist.y);
     vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
-      vertex(pose.leftElbow.x, pose.leftElbow.y);
+    vertex(pose.leftElbow.x, pose.leftElbow.y);
 
     
     // console.log('LeftElbow: ' + pose.leftElbow.x);
@@ -178,7 +178,7 @@ vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
     // console.log('PrevElbow: ' + this.previousPose.leftElbow.x);
     // console.log('PrevWrist: ' + this.previousPose.leftWrist.x);
     
-    //top left
+    // top left
     // vertex(0, 0 );
     // //top right
     // vertex(200, 0 );
