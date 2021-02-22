@@ -102,9 +102,9 @@ var PoseZero = new function(){
   
   this.estimate_scale = function(pose){
     return dist(pose.nose.x, pose.nose.y , pose.leftEye.x, pose.leftEye.y);
-    
   }
   
+  //drawing the bone lines
   this._draw_bones = function(){
     beginShape()
     for (var i = 0; i < arguments.length; i++){
@@ -136,7 +136,6 @@ var PoseZero = new function(){
 
 //     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
 //     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
-    
 //     this._draw_head(pose);
   
     var s = this.estimate_scale(pose);
