@@ -146,3 +146,9 @@ var PoseZero = new function(){
     pop();
   }
 }
+
+function keyPressed() {
+	if(key === 's' || key ==='S'){
+    save("myMark.jpg");
+  }
+}

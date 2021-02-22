@@ -6,7 +6,7 @@ var socket;
 function setup() {
   socket = io();
   
-  createCanvas(windowWidth,windowHeight);
+  cnv = createCanvas(windowWidth,windowHeight);
   capture = createCapture(VIDEO);
   // capture.size(220, 140);
   background(255);
@@ -25,8 +25,8 @@ function setup() {
 	})
   
   // initialInput = createInput("Initials");
-// var saveButton = select('#saveButton');
-//   saveButton.mousePressed(saveDrawing);
+  // var saveButton = select('#saveButton');
+  // saveButton.mousePressed(save(cnv, 'myCanvas.jpg'););
   
   
   
