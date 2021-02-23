@@ -169,7 +169,7 @@ var PoseZero = new function(){
     beginShape();
     vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
     vertex(pose.leftWrist.x, pose.leftWrist.y);
-    vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
+    vertex(this.previousPose.leftElbow.y, this.previousPose.leftElbow.x);
     vertex(pose.leftElbow.x, pose.leftElbow.y);
 
     
@@ -178,14 +178,6 @@ var PoseZero = new function(){
     // console.log('PrevElbow: ' + this.previousPose.leftElbow.x);
     // console.log('PrevWrist: ' + this.previousPose.leftWrist.x);
     
-    // top left
-    // vertex(0, 0 );
-    // //top right
-    // vertex(200, 0 );
-    // // bottom right
-    // vertex(200, 200 );
-    // // bottom left
-    // vertex(0, 200 );
     endShape(CLOSE);
 
 //     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
