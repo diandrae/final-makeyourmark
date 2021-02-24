@@ -159,7 +159,7 @@ var PoseZero = new function(){
     
     // noStroke();
     fill(0,255,0);
-    stroke(0,255,0);
+    stroke(255,0,0);
     // ellipse(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y, 10, 10);
     // ellipse(pose.leftWrist.x, pose.leftWrist.y, 10, 10);
     
@@ -167,16 +167,17 @@ var PoseZero = new function(){
     // ellipse(pose.leftElbow.x, pose.leftElbow.y, 10, 10);
     
     beginShape();
-    vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    // // vertex(pose.leftWrist.x, pose.leftWrist.y);
+    // vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    // // vertex(pose.leftElbow.x, pose.leftElbow.y);
+    // vertex(this.previousPose.leftElbow.y, this.previousPose.leftElbow.x);
+    
+    
+    
+     vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    vertex(pose.leftWrist.x, pose.leftWrist.y);
     vertex(this.previousPose.leftElbow.y, this.previousPose.leftElbow.x);
     vertex(pose.leftElbow.x, pose.leftElbow.y);
-        vertex(pose.leftWrist.x, pose.leftWrist.y);
-    
-    
-    //  vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
-    // vertex(pose.leftWrist.x, pose.leftWrist.y);
-    // vertex(this.previousPose.leftElbow.y, this.previousPose.leftElbow.x);
-    // vertex(pose.leftElbow.x, pose.leftElbow.y);
 
     
     // console.log('LeftElbow: ' + pose.leftElbow.x);
@@ -192,7 +193,7 @@ var PoseZero = new function(){
   
     var s = this.estimate_scale(pose);
     
-    fill(0);
+    // fill(0);
     // rect(this._draw_bones);
     pop();
     
