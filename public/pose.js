@@ -6,6 +6,8 @@ var PoseZero = new function(){
   this.pose0 = null
   this.posenet_objs = []
   this.track_smooth = 0.3
+  this.previousPose = undefined;
+  
 
   this.init = function() {
     
@@ -66,10 +68,11 @@ var PoseZero = new function(){
     if (results.length > 0){
       var new_pose = this._convert(this._get_largest_posenet_obj(results));
       if (this.pose0 == null){
-        this.pose0 = new_pose
+        this.pose0 = new_pose;
       }else{
-        this.lerp_pose(this.pose0, new_pose, this.track_smooth);
-        
+        this.pose0 = new_pose;
+        // *** HERE ***
+        // this.lerp_pose(this.pose0, new_pose, this.track_smooth);
       }
     }
   }
@@ -117,7 +120,6 @@ var PoseZero = new function(){
   }
   
   
-  this.previousPose = undefined;
   
   this.validPose = function(pose)
   {
@@ -136,19 +138,17 @@ var PoseZero = new function(){
     
     if(this.previousPose == undefined)
     {
-      console.log('set previous pose');
+      // console.log(pose);
       this.previousPose = pose;
       return;
     }
     
     ellipse(pose.leftWrist.x, pose.leftWrist.y, 10, 10);
     
-    console.log(`POSE: ${pose.leftWrist.x} PREV: ${this.previousPose.leftWrist.x}`);
-    
-    console.log(pose.leftWrist.x - this.previousPose.leftWrist.x);
+    // console.log(`POSE: ${pose.leftWrist.x} PREV: ${this.previousPose.leftWrist.x}`);
+    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x);
     
     this.previousPose = pose;
-    
     
 //     push();
     
