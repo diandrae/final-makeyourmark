@@ -143,10 +143,25 @@ var PoseZero = new function(){
       return;
     }
     
-    ellipse(pose.leftWrist.x, pose.leftWrist.y, 10, 10);
+    // background(255);
+    line(pose.leftWrist.x, pose.leftWrist.y, this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+
+    
+    fill(0);
+    beginShape();
+    vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    vertex(pose.leftWrist.x, pose.leftWrist.y);
+    vertex(pose.leftElbow.x, pose.leftElbow.y);
+    vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
+    endShape(CLOSE);
+    
+    // ellipse(pose.leftWrist.x, pose.leftWrist.y, 10, 10);
     
     // console.log(`POSE: ${pose.leftWrist.x} PREV: ${this.previousPose.leftWrist.x}`);
-    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x);
+    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
+    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
+    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
+    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
     
     this.previousPose = pose;
     
