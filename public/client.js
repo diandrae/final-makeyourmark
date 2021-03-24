@@ -2,10 +2,8 @@ var local;
 var world = [];
 var socket;
 
-
 function setup() {
   socket = io();
-  
   
   cnv = createCanvas(windowWidth,windowHeight);
   capture = createCapture(VIDEO);
