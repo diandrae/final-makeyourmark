@@ -6,6 +6,10 @@ var server = app.listen(process.env.PORT || 300);
 app.use(express.static('public'));
 console.log('server running')
 
+app.get('/home', (req, res) => {
+  res.sendFile(__dirname + '/home.html');
+})
+
 var socket = require('socket.io');
 
 var io = socket(server);
