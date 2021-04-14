@@ -146,8 +146,9 @@ var PoseZero = new function(){
     // background(255);
     line(pose.leftWrist.x, pose.leftWrist.y, this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
 
-    
-    fill(0);
+    colorMode(HSB, 255);
+    fill.apply(this, args.color);
+    noStroke();
     beginShape();
     vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
     vertex(pose.leftWrist.x, pose.leftWrist.y);
@@ -155,65 +156,9 @@ var PoseZero = new function(){
     vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
     endShape(CLOSE);
     
-    // ellipse(pose.leftWrist.x, pose.leftWrist.y, 10, 10);
     
-    // console.log(`POSE: ${pose.leftWrist.x} PREV: ${this.previousPose.leftWrist.x}`);
-    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
-    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
-    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
-    // console.log(pose.leftWrist.x - this.previousPose.leftWrist.x)pose.leftWrist.x, pose.leftWrist.y;;
     
     this.previousPose = pose;
-    
-//     push();
-    
-//     // colorMode(HSB, 255);
-//     // stroke.apply(this, args.color);
-//     // strokeWeight(4);
-//     // blendMode(MULTIPLY);
-    
-//     strokeJoin(ROUND);
-
-//     // this._draw_bones(pose.leftShoulder, pose.rightShoulder, pose.rightHip, pose.leftHip, pose.leftShoulder);
-    
-//     this._draw_bones(pose.leftElbow, pose.leftWrist);
-//     this._draw_bones(pose.rightElbow, pose.rightWrist);
-    
-//     // noStroke();
-//     fill(0,255,0);
-//     stroke(255,0,0);
-//     // ellipse(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y, 10, 10);
-//     // ellipse(pose.leftWrist.x, pose.leftWrist.y, 10, 10);
-//     // ellipse(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y, 10, 10);
-//     // ellipse(pose.leftElbow.x, pose.leftElbow.y, 10, 10);
-    
-//     beginShape();
-//     // // vertex(pose.leftWrist.x, pose.leftWrist.y);
-//     // vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
-//     // // vertex(pose.leftElbow.x, pose.leftElbow.y);
-//     // vertex(this.previousPose.leftElbow.y, this.previousPose.leftElbow.x);
-    
-
-    
-//      vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
-//     vertex(pose.leftWrist.x, pose.leftWrist.y);
-//     vertex(this.previousPose.leftElbow.y, this.previousPose.leftElbow.x);
-//     vertex(pose.leftElbow.x, pose.leftElbow.y);
-
-
-//     endShape(CLOSE);
-
-// //     this._draw_bones(pose.leftHip, pose.leftKnee, pose.leftAnkle);
-// //     this._draw_bones(pose.rightHip, pose.rightKnee, pose.rightAnkle);
-// //     this._draw_head(pose);
-  
-//     var s = this.estimate_scale(pose);
-    
-//     // fill(0);
-//     // rect(this._draw_bones);
-//     pop();
-    
-//     this.previousPose = pose;
     
   }
 }
