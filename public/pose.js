@@ -107,9 +107,6 @@ var PoseZero = new function(){
     return dist(pose.nose.x, pose.nose.y , pose.leftEye.x, pose.leftEye.y);
   }
   
-  /// this bit (i think?)! vvvv
-  
-  
   // drawing the bone lines
   this._draw_bones = function(){
     beginShape()
@@ -163,8 +160,4 @@ var PoseZero = new function(){
   }
 }
 
-function keyPressed() {
-	if(key === 's' || key ==='S'){
-    save("myMark.jpg");
-  }
-}
+

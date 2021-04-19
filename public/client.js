@@ -39,47 +39,47 @@ function draw() {
   
   // give the server your updates
 	socket.emit('game-update', local.data);
-  for (var i = 0; i < world.length; i++) {
+  
+  // draw the other skeletons
+	for (var i = 0; i < world.length; i++) {
     if (world[i].id == socket.id){ // if its you skip drawing it
       continue;
     }
     
+    // Already checking if other skeleton exists
     if (world[i].data.pose != null){
-      PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color})
+      PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color});
+      
+      if(local.data.pose != null)
+      {
+        var distance = Math.hypot(
+          local.data.pose.rightWrist.x - world[i].data.pose.rightWrist.x,
+          local.data.pose.rightWrist.y - world[i].data.pose.rightWrist.y
+        );
+        
+        if(distance < 10)
+        {
+          download();
+        }
+      }
     }
 	}
 }
 
-  // draw the other skeletons
-// 	 for (let i = 0; i < world.length; i++) {
-//       if (world[i].id == socket.id) { // if its you skip drawing it
-//         continue;
-//       }
+var cooldownDuration = 10;
+var lastFrameSaveTime = -1;
+function download()
+{
+  var time = Date.now();
+  if(time < lastFrameSaveTime + (1000 * cooldownDuration))
+  {
+    // Dont want to save, since we're within 10 secs of save
+    return;
+  }
+  
+  console.log("Save!");
+  
+  saveCanvas();
 
-//       if (world[i].data.pose != null) {
-//         PoseZero.draw_pose_black(world[i].data.pose, {
-//           color: world[i].data.color
-//         });
-
-        //find distance between hands of the 2 clients
-//         if (i < 2 && world.length > 1) {
-//           if (world[0].data.pose != null && world[1].data.pose != null) {
-//             let d = dist(
-//               world[0].data.pose.rightWrist.x,
-//               world[0].data.pose.rightWrist.y,
-//               world[1].data.pose.rightWrist.x,
-//               world[1].data.pose.rightWrist.y
-//             );
-
-//             let distHands = 110;
-//             // if hands are touching, capture screen
-//             if (d < distHands) {
-//               saveCanvas(cnv, 'myMark', 'jpg');
-//               console.log('touched');
-//             }
-//           }
-//         }
-//       }
-//    }
-// }
-    
+  lastFrameSaveTime = time;
+}
