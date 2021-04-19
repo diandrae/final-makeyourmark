@@ -6,7 +6,6 @@ var PoseZero = new function(){
   this.pose0 = null
   this.posenet_objs = []
   this.track_smooth = 0.3
-  this.previousPose = undefined;
   
 
   this.init = function() {
@@ -133,29 +132,29 @@ var PoseZero = new function(){
     };
     
     
-    if(previousPose == undefined)
+    if(previousPose.data == undefined)
     {
-      console.log(previousPose);
-      previousPose = pose;
+      
+      previousPose.data = pose;
       return;
     }
     
     // background(255);
-    line(pose.leftWrist.x, pose.leftWrist.y, previousPose.leftWrist.x, previousPose.leftWrist.y);
+    line(pose.leftWrist.x, pose.leftWrist.y, previousPose.data.leftWrist.x, previousPose.data.leftWrist.y);
 
     colorMode(HSB, 255);
     fill.apply(this, args.color);
     noStroke();
     beginShape();
-    vertex(previousPose.leftWrist.x, previousPose.leftWrist.y);
+    vertex(previousPose.data.leftWrist.x, previousPose.data.leftWrist.y);
     vertex(pose.leftWrist.x, pose.leftWrist.y);
     vertex(pose.leftElbow.x, pose.leftElbow.y);
-    vertex(previousPose.leftElbow.x, previousPose.leftElbow.y);
+    vertex(previousPose.data.leftElbow.x, previousPose.data.leftElbow.y);
     endShape(CLOSE);
     
     
     
-    previousPose = pose;
+    previousPose.data = pose;
     
   }
 }

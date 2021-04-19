@@ -25,7 +25,8 @@ function setup() {
   
 }
 
-var localPreviousPose, remotePreviousPose = undefined;
+var localPreviousPose = {};
+var remotePreviousPose = {};
 
 function draw() {
   
