@@ -54,11 +54,3 @@ function draw() {
   
 }
 
-// function saveDrawing() {
-//   var ref = database.ref('drawings');
-//   var data{
-//     name: "Diandra";
-//     drawing:drawing
-//   }
-//   ref.push(data);
-// }
