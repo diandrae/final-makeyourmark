@@ -65,9 +65,11 @@ function draw() {
             // if hands are touching, capture screen
             if (d < distHands) {
               saveCanvas(cnv, 'myMark', 'jpg');
+              console.log('touched');
             }
           }
         }
       }
    }
+}
     
