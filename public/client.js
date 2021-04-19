@@ -39,37 +39,47 @@ function draw() {
   
   // give the server your updates
 	socket.emit('game-update', local.data);
-  
-  // draw the other skeletons
-	 for (let i = 0; i < world.length; i++) {
-      if (world[i].id == socket.id) { // if its you skip drawing it
-        continue;
-      }
+  for (var i = 0; i < world.length; i++) {
+    if (world[i].id == socket.id){ // if its you skip drawing it
+      continue;
+    }
+    
+    if (world[i].data.pose != null){
+      PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color})
+    }
+	}
+}
 
-      if (world[i].data.pose != null) {
-        PoseZero.draw_pose_black(world[i].data.pose, {
-          color: world[i].data.color
-        });
+  // draw the other skeletons
+// 	 for (let i = 0; i < world.length; i++) {
+//       if (world[i].id == socket.id) { // if its you skip drawing it
+//         continue;
+//       }
+
+//       if (world[i].data.pose != null) {
+//         PoseZero.draw_pose_black(world[i].data.pose, {
+//           color: world[i].data.color
+//         });
 
         //find distance between hands of the 2 clients
-        if (i < 2 && world.length > 1) {
-          if (world[0].data.pose != null && world[1].data.pose != null) {
-            let d = dist(
-              world[0].data.pose.rightWrist.x,
-              world[0].data.pose.rightWrist.y,
-              world[1].data.pose.rightWrist.x,
-              world[1].data.pose.rightWrist.y
-            );
+//         if (i < 2 && world.length > 1) {
+//           if (world[0].data.pose != null && world[1].data.pose != null) {
+//             let d = dist(
+//               world[0].data.pose.rightWrist.x,
+//               world[0].data.pose.rightWrist.y,
+//               world[1].data.pose.rightWrist.x,
+//               world[1].data.pose.rightWrist.y
+//             );
 
-            let distHands = 110;
-            // if hands are touching, capture screen
-            if (d < distHands) {
-              saveCanvas(cnv, 'myMark', 'jpg');
-              console.log('touched');
-            }
-          }
-        }
-      }
-   }
-}
+//             let distHands = 110;
+//             // if hands are touching, capture screen
+//             if (d < distHands) {
+//               saveCanvas(cnv, 'myMark', 'jpg');
+//               console.log('touched');
+//             }
+//           }
+//         }
+//       }
+//    }
+// }
     
