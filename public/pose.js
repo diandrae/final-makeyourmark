@@ -99,7 +99,7 @@ var PoseZero = new function(){
   
   this.draw = function(){
     if (this.pose0 != null){
-      this.draw_pose(this.get());
+      // this.draw_pose(this.get());
     }
   }
   
@@ -123,7 +123,7 @@ var PoseZero = new function(){
     return !!pose.leftElbow && !!pose.rightElbow  && !!pose.leftWrist && !!pose.rightWrist;
   }
   
-  this.draw_pose = function(pose, args) {
+  this.draw_pose = function(pose, args, previousPose) {
     if (args == undefined){args = {}}
     if (args.color == undefined){args.color = [255,255,255]}
     
@@ -133,29 +133,29 @@ var PoseZero = new function(){
     };
     
     
-    if(this.previousPose == undefined)
+    if(previousPose == undefined)
     {
-      // console.log(pose);
-      this.previousPose = pose;
+      console.log(previousPose);
+      previousPose = pose;
       return;
     }
     
     // background(255);
-    line(pose.leftWrist.x, pose.leftWrist.y, this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    line(pose.leftWrist.x, pose.leftWrist.y, previousPose.leftWrist.x, previousPose.leftWrist.y);
 
     colorMode(HSB, 255);
     fill.apply(this, args.color);
     noStroke();
     beginShape();
-    vertex(this.previousPose.leftWrist.x, this.previousPose.leftWrist.y);
+    vertex(previousPose.leftWrist.x, previousPose.leftWrist.y);
     vertex(pose.leftWrist.x, pose.leftWrist.y);
     vertex(pose.leftElbow.x, pose.leftElbow.y);
-    vertex(this.previousPose.leftElbow.x, this.previousPose.leftElbow.y);
+    vertex(previousPose.leftElbow.x, previousPose.leftElbow.y);
     endShape(CLOSE);
     
     
     
-    this.previousPose = pose;
+    previousPose = pose;
     
   }
 }

@@ -25,6 +25,8 @@ function setup() {
   
 }
 
+var localPreviousPose, remotePreviousPose = undefined;
+
 function draw() {
   
   image(capture, 0, 0, 220, 140);
@@ -34,7 +36,7 @@ function draw() {
   
   //draw the skeleton
   if (local.data.pose != null){ 
-    PoseZero.draw_pose(local.data.pose,{color:local.data.color})
+    PoseZero.draw_pose(local.data.pose,{color:local.data.color}, localPreviousPose)
   }
   
   // give the server your updates
@@ -48,7 +50,7 @@ function draw() {
     
     // Already checking if other skeleton exists
     if (world[i].data.pose != null){
-      PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color});
+      PoseZero.draw_pose(world[i].data.pose,{color:world[i].data.color}, remotePreviousPose);
       
       if(local.data.pose != null)
       {
