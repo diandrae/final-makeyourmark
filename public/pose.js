@@ -152,8 +152,6 @@ var PoseZero = new function(){
     vertex(previousPose.data.leftElbow.x, previousPose.data.leftElbow.y);
     endShape(CLOSE);
     
-    
-    
     previousPose.data = pose;
     
   }
