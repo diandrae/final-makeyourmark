@@ -139,7 +139,10 @@ var PoseZero = new function(){
       return;
     }
     
-    // background(255);
+    if(frameCount % 60 == 0){
+         background(255);
+    }
+    
     line(pose.leftWrist.x, pose.leftWrist.y, previousPose.data.leftWrist.x, previousPose.data.leftWrist.y);
 
     colorMode(HSB, 255);
