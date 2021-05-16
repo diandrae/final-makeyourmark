@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.min.js"></script>
+  
     <title>Make Your Mark - HOME PAGE</title>
 
     <!-- Custom CSS -->
@@ -57,6 +61,41 @@
 
 <!-- LANDING PAGE STAT -->
 <div id="landing" >
+  
+  <div class="backgroundSketch">
+       <script>
+  let x = 0;
+let y = 0;
+let px = 0;
+let py = 0;
+         var canvas;
+
+function setup() {
+  canvas = createCanvas(500,500);
+  canvas.position(0,0);
+  // canvas.style('z-index','-1');
+  strokeWeight(50);
+  background(220);
+  stroke(239,129,80)
+}
+
+function draw() {
+  brush();
+}
+
+function brush(){
+  
+  x += (mouseX - x);
+  y += (mouseY - y);
+  
+  line(x, y, px, py);
+  
+  px = x;
+  py = y;
+}
+  </script>
+      </div>
+  
     <div class="leftside">
         <div class="slidestart" onclick="openNav()">
             <h2>ABOUT</h2>
@@ -68,12 +107,16 @@
         </div>
     </div>
     <div class="rightside">
+      
+      
+      
+      
         <div class="container">
             <div class="row">
                     <div class="text-area text-center">
                         <h6>[An Interactive Movement Canvas]</h6>
-                        <h1>Make</h1>
-                        <h1>YO<span><img src="./assets/imgs/Rectangle 15.svg" alt="img"></span>UR</h1>
+                        <h1>MAKE</h1>
+                        <h1>YOUR</h1>
                         <h1>MARK</h1>
                         <h3> <a href="./prepage.html">Let’s Go!</a> <span><img src="./assets/imgs/Arrow 1.svg" alt="arrow"></span> </h3>
                     </div>
@@ -82,6 +125,8 @@
         </div>
     </div>
 </div>
+  
+ 
 <!-- LANDING PAGE END  -->
 
 
