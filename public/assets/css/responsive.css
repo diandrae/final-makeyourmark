@@ -1,0 +1,129 @@
+/* LANDING PAGE */
+@media screen and (max-width: 770px) {
+    #landing .leftside .slidestart h2{font-size: 35px; line-height: 200px;}
+    #landing  .rightside .text-area h6{font-style: normal; font-weight: normal; font-size: 28px; line-height: 20px; margin: 50px 0 20px 0;}
+    #landing  .rightside .text-area h1{font-family: bowl; font-size: 140px; line-height: 140px; color: #000000; }
+    #landing  .rightside .text-area h1 span img{width: 270px; height: 121px;}
+    #landing  .rightside .text-area h3{font-size: 40px; line-height: 20px; font-family: 'cicul'; font-style: normal; font-weight: normal; margin-top: 50px;}
+    #landing  .rightside .text-area h3 img{margin-left: 30px; width: 200px;}
+
+}
+
+@media screen and (max-width: 655px) {
+    #landing .leftside{background-color: #FF7B41; position: absolute; left: 0; top: 0; height: 100%; width: 60px; z-index: 1;}
+    #landing .leftside .slidestart h2{font-size: 35px; line-height: 200px;}
+    #landing  .rightside .text-area h6{font-style: normal; font-weight: normal; font-size: 26px; line-height: 20px; margin: 120px 0 20px 0;}
+    #landing  .rightside .text-area h1{font-family: bowl; font-size: 120px; line-height: 120px; color: #000000; }
+    #landing  .rightside .text-area h1 span img{width: 270px; height: 121px;}
+    #landing  .rightside .text-area h3{font-size: 40px; line-height: 20px; font-family: 'cicul'; font-style: normal; font-weight: normal; margin-top: 50px;}
+    #landing  .rightside .text-area h3 img{margin-left: 30px; width: 200px;}
+
+}
+
+@media screen and (max-width: 570px) {
+    #landing .leftside{background-color: #FF7B41; position: absolute; left: 0; top: 0; height: 100%; width: 60px; z-index: 1;}
+    #landing .leftside .slidestart h2{font-size: 35px; line-height: 200px; z-index: 1;}
+    #landing  .rightside .text-area h6{font-style: normal; font-weight: normal; font-size: 26px; line-height: 20px; margin: 150px 0 20px 0;}
+    #landing  .rightside .text-area h1{font-family: bowl; font-size: 100px; line-height: 100px; color: #000000; }
+    #landing  .rightside .text-area h1 span img{display: none;}
+    #landing  .rightside .text-area h3{font-size: 40px; line-height: 20px; font-family: 'cicul'; font-style: normal; font-weight: normal; margin-top: 20px;}
+    #landing  .rightside .text-area h3 img{margin-left: 30px; width: 150px;}
+
+    
+#about{padding: 40px 0px;}
+#about .text-area p{font-size: 32px; line-height: 55px; color: #000000; margin-bottom: 20px; margin-left: 70px;}
+#about .text-area p span{font-size: 32px; line-height: 55px;}
+#about .instructions .item .nbr{margin-left: 70px;}
+
+}
+
+@media screen and (max-width: 476px) {
+    #landing .leftside{background-color: #FF7B41; position: absolute; left: 0; top: 0; height: 100%; width: 60px; z-index: 1;}
+    #landing .current-online{right: 5%; top: 10px;}
+    #landing  .rightside .text-area h6{font-style: normal; font-weight: normal; font-size: 20px; line-height: 20px; margin: 150px 0 10px 10px;}
+    #landing  .rightside .text-area h1{font-family: bowl; font-size: 80px; line-height: 80px; color: #000000; }
+    #landing  .rightside .text-area h3{font-size: 30px; line-height: 20px; margin-top: 10px;}
+    #landing  .rightside .text-area h3 img{margin-left: 20px; width: 120px;}
+
+}
+
+@media screen and (max-width: 400px) {
+    
+    #landing .leftside{background-color: #FF7B41; position: absolute; left: 0; top: 0; height: 100%; width: 60px; z-index: 1;}
+    #landing .current-online{right: 7%; top: 10px;}
+    #landing  .rightside .text-area h6{font-style: normal; font-weight: normal; font-size: 20px; line-height: 20px; margin: 150px 0 10px 20px;}
+    #landing  .slidestart{z-index: 100;}
+    #landing  .rightside .text-area h1{font-family: bowl; font-size: 60px; line-height: 60px;}
+    #landing  .rightside .text-area h3{font-size: 26px; line-height: 20px; margin-top: 10px;}
+    #landing  .rightside .text-area h3 img{margin-left: 20px;}
+
+}
+
+@media screen and (max-width: 376px) {
+    
+    #landing .leftside{background-color: #FF7B41; position: absolute; left: 0; top: 0; height: 100%; width: 60px; z-index: 1;}
+    #landing .current-online{right: 7%; top: 10px;}
+    #landing  .rightside .text-area h6{font-style: normal; font-weight: normal; font-size: 18px; line-height: 20px; margin: 150px 0 10px 26px;}
+    #landing  .slidestart{z-index: 100;}
+    #landing  .rightside .text-area h1{font-family: bowl; font-size: 60px; line-height: 60px;}
+    #landing  .rightside .text-area h3{font-size: 18px; line-height: 20px; margin-top: 10px;}
+
+}
+
+
+
+
+/************** LIVE PAGE *************/
+@media screen and (max-width: 600px) {
+    #livepage .img-wrapper img{margin-bottom: 30px; width: 251px; height: 251px; border-radius: 50%;}
+    #livepage .hello h6{background: #FF7B41; width: 250px; height: 55px; line-height: 55px;}
+    #footer h5{color: #000000; font-size: 34px; font-style: normal; font-weight: normal; font-family: cicul;}
+}
+
+@media screen and (max-width: 401px) {    
+    #livepage h2{ font-size: 44px; line-height: 60px;}
+}
+
+@media screen and (max-width: 385px) {    
+    #livepage h2{ font-size: 40px; line-height: 60px;}
+    #footer{padding: 10px 20px!important;}
+    #livepage .hello h6{width: 200px; height: 55px; position: absolute; right: 50%; transform: translate(50%,-50%); font-size: 34px; font-style: normal; font-weight: 400;}
+    #livepage .hello img{margin-top: -70px;}
+    #footer h5{color: #000000; font-size: 30px; font-style: normal; font-weight: normal; font-family: cicul;}
+}
+
+
+/************** PRE PAGE STARTS *************/
+
+@media screen and (min-width: 1024px) {
+    #prepage .right-side, #prepage .left-side{padding: 50px 50px;}
+    #prepage .right-side h6{width: 40vw;}
+    #prepage .left-side h6{margin-left: 20px;}
+}
+
+@media screen and (max-width: 770px) {
+    #prepage{width: 100%; display: block; overflow-y: hidden;}
+    #prepage .right-side, #prepage .left-side{width: 100%;}
+    #prepage .right-side h6{width: 65vw;}
+    #prepage .left-side h6{width: 50vw; margin-left: 100px;}
+}
+
+@media screen and (max-width: 542px) {
+    #prepage .right-side h6{width: 72vw;}
+    #prepage .left-side h6{margin-left: 0px;}
+}
+
+@media screen and (max-width: 490px){
+    #prepage .right-side, #prepage .left-side{padding: 50px 50px;}
+    
+    #prepage .left-side h6{margin-left: 12px; width: 70vw; font-size: 36px;}
+    #prepage .left-side .img-wrapper img{width: 280px; height: 190px; text-align: center; margin-bottom: 26px;}
+    #prepage .right-side .img-wrapper img{width: 260px; height: 220px; text-align: center; margin-bottom: 26px;}
+}
+
+@media screen and (max-width: 420px){
+    #prepage .left-side{padding: 400px 50px;}
+    #prepage .left-side h6{margin-right: 50px; width: 75vw; font-size: 36px;}
+    #prepage .right-side h6{width: 50vw; margin-left: 100px;}
+
+}
