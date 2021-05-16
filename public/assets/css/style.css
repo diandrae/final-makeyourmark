@@ -93,8 +93,8 @@
 #landing .leftside .slidestart h2 {
   transform: rotate(-90deg) !important;
   color: #000000;
-  font-size: 35px;
-  line-height: 180px;
+  font-size: 20px;
+  line-height: 150px;
   letter-spacing: -0.04em;
   font-family: "cicul";
   font-style: normal;
@@ -134,7 +134,7 @@
 #landing .rightside .text-area h1 {
   font-family: bowl;
   font-size: 150px;
-  line-height: 160px;
+  line-height: 125px;
   color: #000000;
 }
 #landing .rightside .text-area h1 span img {
@@ -145,7 +145,7 @@
   color: #FF7B41;
   letter-spacing: -0.04em;
   font-size: 60px;
-  line-height: 20px;
+  line-height: 60px;
   font-family: "cicul";
   font-style: normal;
   font-weight: normal;
