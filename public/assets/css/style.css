@@ -16,7 +16,7 @@
 /* LANDING PAGE ABOUT STARTS */
 
 #about {
-  background: #FF7B41;
+/*   background: #FF7B41; */
   height: 100%;
   width: 0%;
   position: fixed;
@@ -78,7 +78,7 @@
 /* LANDONG PAGE START */
 #landing {
   height: 100vh;
-  background: #F5F5F5;
+  background: transparent;
   overflow-y: hidden;
   position: relative;
 }
@@ -196,7 +196,7 @@
   margin-left: 80px !important;
 }
 #prepage .right-side {
-  background: #F5F5F5;
+  background: transparent;
   width: 50%;
   height: 90vh;
   padding: 50px 100px;
