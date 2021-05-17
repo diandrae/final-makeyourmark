@@ -246,7 +246,7 @@
 
 /* livepage STARTS */
 #livepage {
-  background: #F5F5F5;
+  background: transparent;
   padding: 50px;
   height: 90vh;
 }
