@@ -28,7 +28,7 @@ var PoseZero = new function(){
       
     });
     // Hide the video element, and just show the canvas
-    // this.video.hide();
+    this.video.hide();
   }
 
   this._convert = function(posenet_obj){
@@ -139,7 +139,7 @@ var PoseZero = new function(){
       return;
     }
     
-    if(frameCount % 60 == 0){
+    if(frameCount % 1000 == 0){
          background(255);
     }
     
