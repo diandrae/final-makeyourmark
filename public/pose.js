@@ -149,10 +149,10 @@ var PoseZero = new function(){
     fill.apply(this, args.color);
     noStroke();
     beginShape();
-    vertex(previousPose.data.leftWrist.x, previousPose.data.leftWrist.y);
-    vertex(pose.leftWrist.x, pose.leftWrist.y);
-    vertex(pose.leftElbow.x, pose.leftElbow.y);
-    vertex(previousPose.data.leftElbow.x, previousPose.data.leftElbow.y);
+    vertex(previousPose.data.rightWrist.x, previousPose.data.rightWrist.y);
+    vertex(pose.rightWrist.x, pose.rightWrist.y);
+    vertex(pose.rightElbow.x, pose.rightElbow.y);
+    vertex(previousPose.data.rightElbow.x, previousPose.data.rightElbow.y);
     endShape(CLOSE);
     pop();
     
