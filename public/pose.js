@@ -139,7 +139,7 @@ var PoseZero = new function(){
       return;
     }
     
-    if(frameCount % 1000 == 0){
+    if(frameCount % 750== 0){
          background(255);
     }
 
