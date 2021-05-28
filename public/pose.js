@@ -156,6 +156,19 @@ var PoseZero = new function(){
     endShape(CLOSE);
     pop();
     
+    push();
+    blendMode(MULTIPLY);
+    colorMode(HSB, 255);
+    fill.apply(this, args.color);
+    noStroke();
+    beginShape();
+    vertex(previousPose.data.leftWrist.x, previousPose.data.leftWrist.y);
+    vertex(pose.leftWrist.x, pose.leftWrist.y);
+    vertex(pose.leftElbow.x, pose.leftElbow.y);
+    vertex(previousPose.data.leftElbow.x, previousPose.data.vElbow.y);
+    endShape(CLOSE);
+    pop();
+    
     previousPose.data = pose;
     
   }
